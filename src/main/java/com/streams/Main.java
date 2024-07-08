@@ -142,7 +142,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		String filePath = "C:\\Users\\amrit\\eclipse-workspace\\practicestreams\\src\\main\\data\\Employee.csv";
+		String filePath = "<Root>\\practice\\src\\main\\java\\com\\streams\\file\\Employee.csv";
 
 		// Read the CSV file
 		CsvReader csvReader = new CsvReader();
