@@ -1,11 +1,13 @@
-package com.streams.practicestreams.data;
+package com.streams.data;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.streams.practicestreams.model.Employee;
+import com.streams.model.Employee;
+
 
 public class CsvReader {
     public List<Employee> readCSV(String filePath) {

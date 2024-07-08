@@ -1,8 +1,9 @@
-package com.streams.practicestreams.data;
+package com.streams.data;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.streams.practicestreams.model.Employee;
+import com.streams.model.Employee;
 
 public class DataChunker {
     public List<List<Employee>> chunkData(List<Employee> employees, int chunkSize) {

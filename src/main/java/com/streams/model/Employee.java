@@ -1,6 +1,6 @@
-package com.streams.practicestreams.model;
+package com.streams.model;
 
-public class Employee {
+public class Employee implements Comparable<Employee>{
     private String education;
     private String joiningYear;
     private String city;
@@ -10,6 +10,7 @@ public class Employee {
     private String everBenched;
     private int experienceInCurrentDomain;
     private boolean leaveOrNot;
+    private Object name;
     
 
     public Employee(String education, String joiningYear,String city, int paymentTier, int age, String gender, String everBenched, int experienceInCurrentDomain, boolean leaveOrNot) {
@@ -38,5 +39,11 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{education=" + education + ", joiningYear='" + joiningYear + "', city=" + city + ", paymentTier='" + paymentTier + "', age=" + age + "', gender=" + gender + "', everBenched=" + everBenched + "', experienceInCurrentDomain=" + experienceInCurrentDomain + "', leaveOrNot=" + leaveOrNot + '}';                                  
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        return this.joiningYear.compareTo(o.joiningYear);
+        
     }
 }
