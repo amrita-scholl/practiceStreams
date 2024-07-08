@@ -5,7 +5,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -83,13 +82,29 @@ public class Main {
 				new EmployeeSalary(5, "Riya", "prod", 3000),
 				new EmployeeSalary(6, "Rosh", "dev", 2000)).collect(Collectors.toList());
 
-		Comparator<EmployeeSalary> compareBySalary = Comparator.comparing(EmployeeSalary::getSalary);
+		// Comparator<EmployeeSalary> compareBySalary =
+		// Comparator.comparing(EmployeeSalary::getSalary);
 
-		Map<String, Optional<EmployeeSalary>> employeeMap = employeeSalaries.stream().collect(
+		// Map<String, Optional<EmployeeSalary>> employeeMap =
+		// employeeSalaries.stream().collect(
+		// Collectors.groupingBy(EmployeeSalary::getDepartment,
+		// Collectors.reducing(BinaryOperator.maxBy(compareBySalary))));
+
+		// System.out.println("Employee Map >>> " + employeeMap);
+
+		Map<String, EmployeeSalary> employeeMap1 = employeeSalaries.stream().collect(
 				Collectors.groupingBy(EmployeeSalary::getDepartment,
-						Collectors.reducing(BinaryOperator.maxBy(compareBySalary))));
+						Collectors.collectingAndThen(
+								Collectors.maxBy(Comparator.comparingDouble(EmployeeSalary::getSalary)),
+								Optional::get)));
 
-		System.out.println("Employee Map >>> " + employeeMap);
+		System.out.println("Employee Map >>> " + employeeMap1);
+
+		for (Map.Entry<String, EmployeeSalary> entry : employeeMap1.entrySet()) {
+			String employeeId = entry.getKey();
+			double salary = entry.getValue().getSalary();
+			System.out.println("Employee ID: " + employeeId + ", Employee Salary: " + salary);
+		}
 
 	}
 
